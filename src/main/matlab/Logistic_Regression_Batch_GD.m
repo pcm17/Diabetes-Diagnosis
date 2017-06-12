@@ -5,8 +5,8 @@
 %%% CS 1675 Intro to Machine Learning, University of Pittsburgh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-train_data = load('pima_train.txt');
-test_data = load('pima_test.txt');
+train_data = load('resources/pima_train.txt');
+test_data = load('resources/pima_test.txt');
 pgraph = init_progress_graph;       % Initialize graph
 num_attributes = size(train_data,2) - 1; 
 K = 10;             % number of steps

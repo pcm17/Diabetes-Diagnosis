@@ -1,12 +1,12 @@
-%%% Experiments with a decision tree for diabetes classification
+%%% Experiments with diabetes classification using decision trees 
 %%% *************************************************************
 %%% Peter McCloskey
 %%% CS 1675 Intro to Machine Learning, University of Pittsburgh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% load the train and test data (both are normalized)
-load pima_train.txt;
-load pima_test.txt;
+load resources/pima_train.txt;
+load resources/pima_test.txt;
 tr_data = pima_train;
 test_data = pima_test;
 

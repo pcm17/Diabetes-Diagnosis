@@ -1,4 +1,5 @@
-%%% Experiments with a simple NN w/ sigmoidal function 
+%%% Experiments comparing diabetes classification using a NN w/ sigmoidal
+%%% function and 1,2,5, or 10 layers
 %%% for diabetes classification
 %%% *************************************************************
 %%% Peter McCloskey
@@ -6,8 +7,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% load the train and test data (both are normalized)
-load pima_train.txt;
-load pima_test.txt;
+load resources/pima_train.txt;
+load resources/pima_test.txt;
 
 tr_data = pima_train;
 test_data = pima_test;

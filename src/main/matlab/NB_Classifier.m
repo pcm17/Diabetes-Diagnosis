@@ -5,8 +5,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load diabetes data
-train_data = load('pima_train.txt');
-test_data = load('pima_test.txt');
+train_data = load('resources/pima_train.txt');
+test_data = load('resources/pima_test.txt');
 num_features = size(train_data,2) - 1;
 X_train = train_data(:,1:num_features);
 X_test = test_data(:,1:num_features);

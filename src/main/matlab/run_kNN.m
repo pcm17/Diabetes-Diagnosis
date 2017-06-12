@@ -5,8 +5,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% load the train and test data (both are normalized)
-load pima_train.txt;
-load pima_test.txt;
+load resources/pima_train.txt;
+load resources/pima_test.txt;
 tr_data = pima_train;
 test_data = pima_test;
 
