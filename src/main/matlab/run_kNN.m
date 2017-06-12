@@ -1,4 +1,4 @@
-%%% Experiments with a kNN Classifier for diabetes classification
+%%% Experiments with diabetes classification using a KNN Classifier
 %%% *************************************************************
 %%% Peter McCloskey
 %%% CS1675 Intro to Machine Learning, University of Pittsburgh
