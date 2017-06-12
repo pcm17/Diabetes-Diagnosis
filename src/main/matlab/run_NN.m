@@ -27,7 +27,7 @@ y_test=test_data(:,data_col);
 % defines the number of hidden layers
 layers = [1 2 5 10 20];
 nLoops=length(layers);
-nReps = 7;
+nReps = 5;
 %% Loops nLoops*nReps times to experiment with different numbers of hidden layers
 
 for i = 1:nLoops
@@ -55,7 +55,7 @@ for i = 1:nLoops
     %% runs learned network on inputs in x (training set)
     res=net(x');
     %%% mean classification error on the training data
-    class_error_train(i,j)=sum(abs(y-round(res)'))/size(res,2);
+    class_error_train(i,j)=sum(y~=round(res)')/size(res,2);
     %%% 'Mean squared error (mse) on the training data'
     mse_error_train(i,j) = perform(net,y',res);
 
@@ -63,19 +63,18 @@ for i = 1:nLoops
     %% runs learned network on inputs in x (testing set)
     res_test = net(x_test');
     %%% mean classification error on the testing data
-    class_error_test(i,j)=sum(abs(y_test-round(res_test)'))/size(res_test,2);
+    class_error_test(i,j)=sum(y_test~=round(res_test)')/size(res_test,2);
     %%% 'Mean squared error (mse) on the testing data'
     mse_error_test(i,j) = perform(net,y_test',res_test);
     end
 end
 
-avg_class_error_train = mean(class_error_train');
-avg_class_error_test = mean(class_error_test');
+avg_acc_tr = 100*(1-mean(class_error_train'));
+avg_acc_test = 100*(1-mean(class_error_test'));
 
-figure,scatter(layers, avg_class_error_test);
-title(['Test Error for ', num2str(layers), ' hidden layers']);
-figure,scatter(layers, avg_class_error_train);
-title(['Train Error for ', num2str(layers), ' hidden layers']);
+figure,plot(layers, avg_acc_test, layers, avg_acc_tr);
+legend('Test','Train');
+title(['Accuracy for ', num2str(layers), ' hidden layers']);
 
 
 

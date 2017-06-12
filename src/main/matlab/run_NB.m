@@ -39,9 +39,9 @@ sens = confuse_test(1,1) / (confuse_test(1,1) + confuse_test(2,1));
 spec = confuse_test(2,2) / (confuse_test(2,2) + confuse_test(1,2));
 
 % Display results
-fprintf('Training Misclassification Error = %.4f\nTest Misclassification Error = %.4f\n\n',traine_NB, teste_NB);
 fprintf( 'Training Confusion matrix:\n[%d\t%d]\n[%d\t%d]\n\n',confuse_train);
 fprintf( 'Test Confusion matrix:\n[%d\t%d]\n[%d\t%d]\n\n',confuse_test);
+fprintf('Training Accuracy = %.4f\nTest Accuracy = %.4f\n\n',100*(1-traine_NB), 100*(1-teste_NB));
 fprintf( 'Sensitivity = %.4f\nSpecificity = %.4f\n\n', sens, spec);
 
 function [y_pred] = predict_NB(X, exp_0_1_mu, exp_1_1_mu, norm_0_2_mu, norm_0_2_sigma, norm_1_2_mu, norm_1_2_sigma, norm_0_3_mu, norm_0_3_sigma,norm_1_3_mu, norm_1_3_sigma, norm_0_4_mu, norm_0_4_sigma, norm_1_4_mu, norm_1_4_sigma, exp_0_5_mu, exp_1_5_mu, norm_0_6_mu, norm_0_6_sigma, norm_1_6_mu, norm_1_6_sigma,exp_0_7_mu, exp_1_7_mu, exp_0_8_mu, exp_1_8_mu, prior_y0, prior_y1)

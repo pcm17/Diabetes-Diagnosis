@@ -27,7 +27,7 @@ y_test=test_data(:,data_col);
 new_tree=fitctree(x,y, 'NumVariablesToSample',10,'MinParentSize',20,'MinLeafSize',16,'splitcriterion','gdi');
 y_pred=predict(new_tree,x_test);
 error = sum(y_pred~=y_test)/size(y_test,1);
-fprintf('\nDecision Tree Error = %.2f\n',error*100);
+fprintf('\nDecision Tree Test Accuracy = %.2f\n',(1-error)*100);
 
 
 %plot(leafs,error);

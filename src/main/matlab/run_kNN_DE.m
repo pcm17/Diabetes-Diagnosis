@@ -30,10 +30,10 @@ x_test = test_data(:,1:n_features);
 y_test = test_data(:,data_col);
 
 %% 
-numReps = 10;
+numReps = 20;
 numTestPoints = size(x_test,1);
 accuracy = zeros(numReps,1);
-hvals = linspace(0.01,1,numReps);
+hvals = linspace(0.001,1,numReps);
 for n = 1:numReps
     h = hvals(n);
     for i = 1:numTestPoints

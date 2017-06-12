@@ -10,32 +10,40 @@ load resources/pima_test.txt;
 tr_data = pima_train;
 test_data = pima_test;
 
-data_col= size(tr_data,2)
-n_features = data_col - 1
+data_col= size(tr_data,2);
+n_features = data_col - 1;
 
 %%% create x
-x = tr_data(:,1:n_features);
-x = x/norm(x);
+x_tr = tr_data(:,1:n_features);
+x_tr = normalize(x_tr);
 %% create y vector
-y=tr_data(:,data_col);
+y_tr = tr_data(:,data_col);
  
-%% builds x for the the test set
+%% build x for the the test set
 x_test = test_data(:,1:n_features);
 x_test = normalize(x_test);
-myxtest = (x_test - min(x_test))./(max(x_test)-min(x_test)); 
-%% builds y vector for the test set
+%myxtest = (x_test - min(x_test))./(max(x_test)-min(x_test)); 
+%% build y vector for the test set
 y_test=test_data(:,data_col);
 
-%%%% classify examples in the test set using the 3NN classifier using the
+%%%% classify examples in the test set using the KNN classifier using the
 %%%% Euclidean metric
-neighbors = linspace(1,5,5);
-N = numel(neighbors);
+N = 20;
+neighbors = linspace(1,N,N);
+accuracy_test = zeros(1,N);
+accuracy_tr = zeros(1,N);
 for n =1:N
-    y_pred=knnclassify(x_test,x,y,neighbors(n),'euclidean');
-    error= sum(abs(y_pred-y_test))/size(y_test,1);
-    accuracy(n)=1-error;
+    mdl=fitcknn(x_tr,y_tr,'NumNeighbors', neighbors(n),'NSMethod','euclidean');
+    
+    y_pred = predict(mdl, x_test);
+    error= sum(abs(y_pred ~= y_test))/length(y_pred);
+    accuracy_test(n)=1-error;
 end
-figure,plot(neighbors, accuracy);
+
+figure,plot(neighbors, accuracy_test);
 title('Data Normalized');
 xlabel('Number of Neighbors');
 ylabel('Classification Accuracy');
+top_acc_test = max(accuracy_test);
+top_num_neighbors_test = find(accuracy_test == top_acc_test);
+fprintf('Top Test Accuracy: %.2f\tw/ %d neighbors\n',top_acc_test*100, top_num_neighbors_test(1));
